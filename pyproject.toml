@@ -5,10 +5,16 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "~3.7"
 chalice = "^1.12"
 
 [tool.poetry.dev-dependencies]
+"aws-cdk.core" = "^1.19"
+"aws-cdk.aws-dynamodb" = "^1.19"
+"aws-cdk.aws-iam" = "^1.19"
+cdk-chalice = "^0.4.0"
+pycodestyle = "^2.5.0"
+mypy = "^0.761"
 
 [build-system]
 requires = ["poetry>=0.12"]
