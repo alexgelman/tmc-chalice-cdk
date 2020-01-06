@@ -2,10 +2,10 @@
 
 from aws_cdk import core
 
-from infra.infra_stack import InfraStack
+from stacks.items_manager_stack import ItemsManagerStack
 
 
 app = core.App()
-InfraStack(app, "infra")
+ItemsManagerStack(app, "infra")
 
 app.synth()
