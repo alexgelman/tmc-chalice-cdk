@@ -1,3 +1,8 @@
 .vscode/
 .mypy_cache/
 **/requirements.txt
+
+**/cdk.out/
+**/chalice.out/
+
+**/__pycache__/

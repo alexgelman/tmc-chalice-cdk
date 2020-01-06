@@ -32,17 +32,7 @@ def get_item(name):
     item: Item = get_items_db().get_item(name)
     if item is None:
         raise NotFoundError(f'Item: ({name}) not found')
-    # Return the item without the secret field
-    return Item.Schema(exclude=["secret"]).dumps(obj=item)
-
-
-@app.route('/secrets/{name}', methods=['GET'])
-def get_secret(name: str):
-    item: Item = get_items_db().get_item(name)
-    if item is None:
-        raise NotFoundError(f'Item: ({name}) not found')
-    # Return only the secret field from the item
-    return Item.Schema(only=["secret"]).dumps(obj=item)
+    return Item.Schema().dumps(obj=item)
 
 
 @app.route('/items', methods=['POST'])
@@ -69,7 +59,7 @@ def list_items():
     if app.current_request.query_params:
         params = _extract_items_list_params(app.current_request.query_params)
     items: List[Item] = get_items_db().list_items(**params)
-    json_items = [Item.Schema(exclude=["secret"]).dump(item) for item in items]
+    json_items = [Item.Schema().dump(item) for item in items]
     return json_items
 
 
