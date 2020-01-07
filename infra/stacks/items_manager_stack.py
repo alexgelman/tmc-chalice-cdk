@@ -18,9 +18,19 @@ class ItemsManagerStack(core.Stack):
                 type=aws_dynamodb.AttributeType.STRING),
             billing_mode=aws_dynamodb.BillingMode.PAY_PER_REQUEST,
             removal_policy=core.RemovalPolicy.DESTROY)
-        
+
         lambda_service_principal = aws_iam.ServicePrincipal('lambda.amazonaws.com')
         self.api_handler_iam_role = aws_iam.Role(self, 'ItemsManagerApiHandlerLambdaRole', assumed_by=lambda_service_principal)
+
+        self.api_handler_iam_role.add_to_policy(aws_iam.PolicyStatement(
+            actions=[
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            resources=["arn:aws:logs:*:*:*"],
+            effect=aws_iam.Effect.ALLOW))
+
         self.items_table.grant_read_write_data(self.api_handler_iam_role)
 
         api_source_dir = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'api')

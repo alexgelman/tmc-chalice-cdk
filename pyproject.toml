@@ -19,6 +19,8 @@ cdk-chalice = "^0.4.0"
 pycodestyle = "^2.5.0"
 mypy = "^0.761"
 pylint = "^2.4.4"
+"aws_cdk.aws_cloudwatch" = "^1.19.0"
+"aws_cdk.aws_logs" = "^1.19.0"
 
 [build-system]
 requires = ["poetry>=0.12"]

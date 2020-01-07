@@ -146,6 +146,21 @@ publication = ">=0.0.3"
 
 [[package]]
 category = "dev"
+description = "The CDK Construct Library for AWS::Logs"
+name = "aws-cdk.aws-logs"
+optional = false
+python-versions = ">=3.6"
+version = "1.19.0"
+
+[package.dependencies]
+"aws-cdk.aws-cloudwatch" = ">=1.19.0,<2.0"
+"aws-cdk.aws-iam" = ">=1.19.0,<2.0"
+"aws-cdk.core" = ">=1.19.0,<2.0"
+jsii = ">=0.20.11,<0.21.0"
+publication = ">=0.0.3"
+
+[[package]]
+category = "dev"
 description = "CDK Constructs for AWS S3"
 name = "aws-cdk.aws-s3"
 optional = false
@@ -656,7 +671,7 @@ python-versions = "*"
 version = "1.11.2"
 
 [metadata]
-content-hash = "1495671873cc4ee0b50a9159649323a22d56e7182e46e7235b4a10eb89e5871b"
+content-hash = "ff385419c0c94ec30c57abc36e84c6a6ddf9371c9388f76013d95383640ff4d8"
 python-versions = "~3.7"
 
 [metadata.files]
@@ -699,6 +714,10 @@ attrs = [
 "aws-cdk.aws-kms" = [
     {file = "aws-cdk.aws-kms-1.19.0.tar.gz", hash = "sha256:dad023a808e62262307010ccb4ed9ac52039b4891a761634e6f87dce7ad25c52"},
     {file = "aws_cdk.aws_kms-1.19.0-py3-none-any.whl", hash = "sha256:66387a4fd2bb4ce20db43175c8598b8ef25ffb97c1703da544822b500caebcd2"},
+]
+"aws-cdk.aws-logs" = [
+    {file = "aws-cdk.aws-logs-1.19.0.tar.gz", hash = "sha256:8b8112b06864725545c2e148281466c4c64134f72493d865295b3393cd8865f9"},
+    {file = "aws_cdk.aws_logs-1.19.0-py3-none-any.whl", hash = "sha256:15806cd86a8433c277f1a3f7816873adf703e8484cb7cc1aa29b064438024676"},
 ]
 "aws-cdk.aws-s3" = [
     {file = "aws-cdk.aws-s3-1.19.0.tar.gz", hash = "sha256:8731ff4edad957cb9345fc117697a5a4099ba111631a5cd9fa277bf88cf23d9e"},
