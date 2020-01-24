@@ -18,10 +18,10 @@ class ItemsManagerStack(core.Stack):
                 name='name',
                 type=AttributeType.STRING))
 
-        principle = 'lambda.amazonaws.com'
+        principal = 'lambda.amazonaws.com'
         api_role = Role(self,
             'ApiRole',
-            assumed_by=ServicePrincipal(principle))
+            assumed_by=ServicePrincipal(principal))
         item_table.grant_read_write_data(api_role)
 
         chalice_config = {
