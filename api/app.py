@@ -23,7 +23,7 @@ def get_items_db() -> db.ItemsDB:
     if _ITEMS_DB is None:
         _ITEMS_DB = db.DynamoItemsDB(
             boto3.resource('dynamodb').Table(
-                os.environ['ACCOUNTS_TABLE_NAME']))
+                os.environ['TABLE_NAME']))
     return _ITEMS_DB
 
 

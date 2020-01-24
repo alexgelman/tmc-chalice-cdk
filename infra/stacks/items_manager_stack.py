@@ -1,25 +1,27 @@
 import os
 from os import path
 
-from aws_cdk import aws_dynamodb as dynamo, aws_iam as iam, core
+from aws_cdk import aws_dynamodb, aws_iam, core
 from aws_cdk.core import Construct
 from aws_cdk.aws_dynamodb import Attribute, AttributeType, Table
+from aws_cdk.aws_iam import Role, ServicePrincipal
 from cdk_chalice import Chalice
 
 
 class ItemsManagerStack(core.Stack):
 
     def __init__(self, scope: Construct, id: str, **kwargs):
+        super().__init__(scope, id, **kwargs)
 
-        item_table = Table(self, "ItemTable",
+        item_table = Table(self, 'ItemTable',
             partition_key=Attribute(
-                name="name",
+                name='name',
                 type=AttributeType.STRING))
 
         principle = 'lambda.amazonaws.com'
-        api_role = iam.Role(self,
+        api_role = Role(self,
             'ApiRole',
-            assumed_by=iam.ServicePrincipal(principle))
+            assumed_by=ServicePrincipal(principle))
         item_table.grant_read_write_data(api_role)
 
         chalice_config = {
@@ -34,5 +36,5 @@ class ItemsManagerStack(core.Stack):
 
         self.chalice_app = Chalice(self,
             'ItemsManagerApi',
-            source_dir='../../api',
+            source_dir='./api',
             stage_config=chalice_config)
