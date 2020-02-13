@@ -6,3 +6,5 @@
 **/chalice.out/
 
 **/__pycache__/
+
+.venv/
